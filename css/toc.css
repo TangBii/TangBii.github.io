@@ -4,6 +4,7 @@
   border-left: rgba(88,88,88,0.1) 1px solid;
   padding: 1em 1em 0 1em;
   margin-left: 1em;
+  max-width: 28%;
 }
 .toc-title {
   font-size: 120%;
@@ -22,8 +23,8 @@
   width: inherit;
   line-height: 1em;
   font-size: 0.9em;
-  float: left;
-  overflow: auto;
+  float: right;
+  overflow: hidden;
 }
 @media mq-mobile {
   #toc {

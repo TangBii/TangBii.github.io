@@ -15,10 +15,11 @@ var searchFunc = function(path, search_id, content_id) {
             }).get();
 
             var $input = document.getElementById(search_id);
-			if (!$input) return;
+			      if (!$input) return;
             var $resultContent = document.getElementById(content_id);
             if ($("#local-search-input").length > 0) {
                 $input.addEventListener('input', function () {
+                    var isMatch;
                     var str = '<ul class=\"search-result-list\">';
                     var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
                     $resultContent.innerHTML = "";
@@ -27,7 +28,7 @@ var searchFunc = function(path, search_id, content_id) {
                     }
                     // perform local searching
                     datas.forEach(function (data) {
-                        var isMatch = true;
+                        isMatch = true
                         var content_index = [];
                         if (!data.title || data.title.trim() === '') {
                             data.title = "Untitled";
@@ -94,6 +95,9 @@ var searchFunc = function(path, search_id, content_id) {
                         }
                     });
                     str += "</ul>";
+                    if(str==='<ul class=\"search-result-list\"></ul>'){
+                        str = '<ul class=\"search-result-list\"><li>未找到相关内容</li></ul>'
+                    }
                     $resultContent.innerHTML = str;
                 });
             }
@@ -105,7 +109,7 @@ $(document).ready(function(){
     $("#local-search-input").bind('keypress',function(event){
         if(event.keyCode=='13'){
             //$(this).val('');
-            alert('search');
+            // alert('search');
         }
     })
 });
